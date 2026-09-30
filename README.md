@@ -78,4 +78,6 @@ Code (`validate.mjs`, `package.json`, `schema/*.json`, `examples/*.json`) is lic
 
 ## About
 
-Published by PinkWallet, which is building Pink Agentic AI Payment (early access): it enforces per-agent spending caps, allowlists and approval thresholds at the MCP layer, before a payment executes.
+Published by PinkWallet. Pink Agentic AI Payments (by PinkWallet, early access) is the approval layer between AI agents and company money: plain-language rules, per-agent budgets and human approvals decide each payment before a single-use card or bank transfer is issued.
+
+Try the interactive prototype (sample companies, no real money moves): https://claude.ai/public/artifacts/TpsUqLKnqZ3jHpghEGcimx
