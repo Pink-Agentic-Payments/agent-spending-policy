@@ -1,0 +1,16 @@
+{
+  "agent_id": "procurement-agent-eu-01",
+  "currency": "EUR",
+  "per_transaction_cap": 500000,
+  "window_caps": [
+    { "period": "month", "amount": 2000000 }
+  ],
+  "merchant_allowlist": ["supplier-acme.example.com", "supplier-widgetco.example.com"],
+  "category_allowlist": ["5045", "5065"],
+  "approval_threshold": {
+    "amount": 100000,
+    "channel": "slack:#procurement-approvals"
+  },
+  "valid_until": "2026-12-31T23:59:59Z",
+  "idempotency_required": true
+}

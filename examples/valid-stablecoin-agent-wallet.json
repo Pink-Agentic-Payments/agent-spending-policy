@@ -1,0 +1,12 @@
+{
+  "agent_id": "onchain-wallet-agent-07",
+  "currency": "USDC",
+  "per_transaction_cap": 10000,
+  "window_caps": [
+    { "period": "day", "amount": 50000 },
+    { "period": "month", "amount": 500000 }
+  ],
+  "merchant_allowlist": ["0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48", "0x1234000000000000000000000000000000abcd"],
+  "idempotency_required": false,
+  "x-notes": "USDC is 1:1 USD-pegged; this example treats 'minor units' as USD cents (100 = $1.00) for readability. idempotency_required is false here because uniqueness is enforced onchain by the wallet's own nonce, not by this policy layer."
+}

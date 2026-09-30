@@ -1,0 +1,4 @@
+{
+  "agent_id": "broken-agent-01",
+  "per_transaction_cap": 2000
+}

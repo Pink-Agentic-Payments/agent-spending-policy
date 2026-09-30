@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Pink-Agentic-Payments/agent-spending-policy/blob/main/schema/agent-spending-policy.v0.1.schema.json",
+  "title": "Agent Spending Policy",
+  "description": "A vendor-neutral description of what an AI agent is allowed to spend, on whom, and when a human must approve it. This is a draft (v0.1) reference format, not a standard and not an implementation of any product. See MAPPING.md for how each field relates to specific payment providers' native settings.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["agent_id", "currency", "per_transaction_cap"],
+  "properties": {
+    "agent_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Opaque identifier for the agent this policy applies to, scoped by whatever system issues it."
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3,5}$",
+      "description": "ISO 4217 currency code (e.g. USD, EUR) or a short uppercase asset ticker (e.g. USDC) that all amount fields in this policy are denominated in."
+    },
+    "per_transaction_cap": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Maximum amount allowed for a single transaction, expressed as an integer in minor units of `currency` (e.g. cents for USD, the smallest whole unit for the named asset)."
+    },
+    "window_caps": {
+      "type": "array",
+      "description": "Rolling-window spending caps. At most one entry per `period`.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["period", "amount"],
+        "properties": {
+          "period": {
+            "type": "string",
+            "enum": ["day", "week", "month"],
+            "description": "The rolling window this cap applies to."
+          },
+          "amount": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Maximum total spend allowed within the window, in minor units of `currency`."
+          }
+        }
+      }
+    },
+    "merchant_allowlist": {
+      "type": "array",
+      "description": "Exact merchant or recipient identifiers (hostname, wallet address, or provider-assigned merchant ID) this agent may pay. If present and non-empty, only these are permitted.",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "merchant_denylist": {
+      "type": "array",
+      "description": "Merchant or recipient identifiers this agent may never pay, checked regardless of the allowlist.",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "category_allowlist": {
+      "type": "array",
+      "description": "Optional: merchant category codes (MCC) or provider-defined category labels this agent may pay into. If present and non-empty, only these are permitted.",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "category_denylist": {
+      "type": "array",
+      "description": "Optional: merchant category codes (MCC) or provider-defined category labels this agent may never pay into.",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "approval_threshold": {
+      "type": "object",
+      "description": "Amount at or above which a payment must be routed to a human instead of executing automatically.",
+      "additionalProperties": false,
+      "required": ["amount"],
+      "properties": {
+        "amount": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Amount at or above which human approval is required, in minor units of `currency`."
+        },
+        "channel": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Opaque reference to where the approval request is routed (e.g. an email address, a Slack channel, a ticket queue ID). This schema does not define channel formats or delivery."
+        }
+      }
+    },
+    "valid_until": {
+      "type": "string",
+      "format": "date-time",
+      "description": "RFC 3339 timestamp after which this policy is no longer valid and must be treated as expired."
+    },
+    "idempotency_required": {
+      "type": "boolean",
+      "default": true,
+      "description": "If true, the enforcing system must reject a retried payment request that reuses an idempotency key already recorded for this agent."
+    }
+  },
+  "patternProperties": {
+    "^x-": {
+      "description": "Vendor- or deployment-specific extension field. Consumers that don't recognize an x- field must ignore it, not reject the policy."
+    }
+  }
+}

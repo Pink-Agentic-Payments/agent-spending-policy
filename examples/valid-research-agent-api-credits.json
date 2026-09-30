@@ -1,0 +1,11 @@
+{
+  "agent_id": "research-agent-01",
+  "currency": "USD",
+  "per_transaction_cap": 2000,
+  "window_caps": [
+    { "period": "day", "amount": 5000 }
+  ],
+  "merchant_allowlist": ["api.openai.com", "api.anthropic.com", "generativelanguage.googleapis.com"],
+  "idempotency_required": true,
+  "x-notes": "Buys API credits for a research agent. No approval_threshold: all spend here is below the amounts anyone would want to review by hand."
+}

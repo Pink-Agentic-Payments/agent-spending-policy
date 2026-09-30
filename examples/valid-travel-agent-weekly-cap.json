@@ -1,0 +1,14 @@
+{
+  "agent_id": "travel-booking-agent-01",
+  "currency": "USD",
+  "per_transaction_cap": 150000,
+  "window_caps": [
+    { "period": "week", "amount": 300000 }
+  ],
+  "merchant_denylist": ["known-scam-travel-deals.example.com"],
+  "approval_threshold": {
+    "amount": 80000,
+    "channel": "email:travel-approvals@example.com"
+  },
+  "idempotency_required": true
+}

@@ -1,0 +1,18 @@
+{
+  "name": "agent-spending-policy",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Validator for the draft vendor-neutral agent spending policy schema (v0.1).",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "validate": "node validate.mjs examples/*.json"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  },
+  "license": "Apache-2.0"
+}

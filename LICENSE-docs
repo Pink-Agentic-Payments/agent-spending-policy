@@ -1,0 +1,13 @@
+Documentation License (CC BY 4.0)
+
+The documentation in this repository — README.md and MAPPING.md — is
+licensed under the Creative Commons Attribution 4.0 International License
+(CC BY 4.0).
+
+You are free to share and adapt this material for any purpose, even
+commercially, as long as you give appropriate credit.
+
+Full license text: https://creativecommons.org/licenses/by/4.0/
+
+Code in this repository (validate.mjs, package.json, schema/*.json,
+examples/*.json) is licensed separately under Apache-2.0 — see LICENSE.

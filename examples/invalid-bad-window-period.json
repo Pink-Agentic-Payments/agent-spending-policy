@@ -1,0 +1,8 @@
+{
+  "agent_id": "broken-agent-02",
+  "currency": "USD",
+  "per_transaction_cap": 2000,
+  "window_caps": [
+    { "period": "quarterly", "amount": 5000 }
+  ]
+}
