@@ -67,6 +67,10 @@ PASS examples/valid-travel-agent-weekly-cap.json
 - `validate.mjs` / `package.json` — the validator
 - `MAPPING.md` — every schema field mapped to its native equivalent across 14 providers/protocols, cited row-by-row against the crosswalk
 
+## Implementations
+
+- Pink Agentic AI Payments sandbox (by the maintainers of this spec): a live MCP server whose rules engine covers per-agent budgets, per-payment caps, allow/ask/block rules and human approvals: https://agentic-sandbox.pinkwallet.com/ (MCP Registry: `com.pinkwallet/agentic-payments-sandbox`). Note: the sandbox's policy format is its own; this spec doesn't bind it.
+
 ## Related PinkWallet datasets
 
 - [agent-spending-controls-crosswalk](https://github.com/Pink-Agentic-Payments/agent-spending-controls-crosswalk) — the 43-row dataset this mapping is built from
