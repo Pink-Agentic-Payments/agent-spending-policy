@@ -2,6 +2,8 @@
 
 A small, vendor-neutral JSON Schema for describing what an AI agent is allowed to spend, on whom, and when a human must approve it — plus a field-by-field mapping to how each concept is expressed in 14 real payment providers' and protocols' own documented settings.
 
+> **New:** can you make an AI agent overspend? Try our open challenge against the sandbox (test money only): [overspend-challenge](https://github.com/Pink-Agentic-Payments/overspend-challenge)
+
 **This is a draft, v0.1, not a standard.** It is not endorsed by any provider, protocol, or standards body, and it is not an implementation of any product — see "What this is not" below. Feedback is welcome via issues on this repo once it is published.
 
 ## Why this exists
